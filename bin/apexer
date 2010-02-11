@@ -1,0 +1,560 @@
+#!/usr/bin/env python
+__version__ = "0.1.0"
+import os
+import sys
+sys.path.append(os.getcwd())
+from optparse import OptionParser, SUPPRESS_HELP, make_option
+from atompubbase.model import Entry, Collection, Service, Context, APP, ATOM
+from httplib2 import Http
+import pickle
+import itertools
+import mimetypes
+import copy
+import httplib2
+import pprint
+httplib2.debuglevel=4
+
+class _Session(object):
+    context = Context()
+    authtype = None
+    credentials = None
+    cache = None
+
+
+def _find_session_file(options):
+    """
+    command line options
+    $APEXER_CMD_LINE_SESSION
+    $HOME/.apexer/session
+    """
+    dir = options.session
+    if not dir:
+       dir = os.environ.get("APEXER_CMD_LINE_SESSION")
+    if not dir:
+        home = os.environ.get("HOME")
+        if home:
+            home_dir = os.path.join(home, ".apexer")
+            if not os.path.exists(home_dir):
+                os.mkdir(home_dir, 0700)
+            dir = os.path.join(home, ".apexer", "session")
+    if not dir:
+        perror("Could not locate the session file.")
+    return dir
+
+def _save_session(session, options):
+    session.context.http = None
+    fname = _find_session_file(options)
+    f = file(fname, "w")
+    pickle.dump(session, f)
+    f.close()
+
+def apply_credentials(session, credentials):
+    try:
+        f = file(credentials, "r")
+    except IOError:
+        perror("Unable to load the credentials file %s, file is missing or unreadable." % credentials)
+    name, password = f.read().split()[0:2]
+    f.close()
+    session.context.http.add_credentials(name, password)
+
+
+def _restore_session(options):
+    fname = _find_session_file(options)
+    try:
+        f = file(fname, "r")
+    except IOError:
+        perror("Unable to load the session file %s, file is missing or unreadable." % fname)
+    session = pickle.load(f)
+    f.close()
+    session.context.http = Http(session.cache) 
+
+    if session.credentials:
+        apply_credentials(session, session.credentials)
+
+    return session
+
+# Create a prototype OptionParser configured the way we 
+# want that will be cloned for each operation.
+baseparser = OptionParser(usage="", conflict_handler="resolve")
+
+# Add in options common to all commands
+baseparser.add_option("-s", "--session",  dest="session",  help="A file for the session state.") 
+baseparser.add_option("-h", "--help",  help=SUPPRESS_HELP) 
+
+# Define options to be used by mulitple commands
+RAW         = make_option("-r", "--raw",         dest="raw",      action="store_true", help="Print the raw response body received.") 
+INCLUDE     = make_option("-i", "--include",     dest="include",  action="store_true", help="Print the HTTP headers received.") 
+CREDENTIALS = make_option("-d", "--credentials", dest="credentials",     help="File containing credentials. The file must contain a username on one line and the password on the next.")
+CACHE       = make_option("-c", "--cache",       dest="cache",           help="Directory to store the HTTP cache in.") 
+
+def require_service(service):
+    if None == service:
+        baseparser.error("Please select a service document to start with first.")
+
+def require_collection(collection):
+    if None == collection:
+        baseparser.error("Please select a collection to work with first.")
+
+def require_entry(entry):
+    if None == entry:
+        baseparser.error("Please select an entry to work with first.")
+
+def perror(s):
+    baseparser.error(s)
+
+
+def response_options(options, headers, body):
+    if options.include:
+        print "\n".join(["%s: %s" % (k, v) for (k,v) in headers.iteritems()])
+    if options.raw:
+        if options.include:
+            print
+        print body
+
+
+def service(args):
+    """service: Set the service document to work from.
+usage: service [URI]
+
+  Sets the service document to be the one located at URI.
+
+"""
+    (options, args) = service.parser.parse_args(args)
+    if len(args) != 1:
+        perror("Incorrect number of arguments.")
+    
+    session = _Session()
+    session.cache = options.cache
+    h = Http(session.cache)
+    session.context = Context(http=h, service=args[0])
+    if options.credentials:
+        apply_credentials(session, options.credentials)
+        session.credentials = options.credentials
+    s = Service(session.context)
+    headers, body = s.get()
+    if headers.status == 200:
+        if s.etree() and "{http://www.w3.org/2007/app}service" == s.etree().tag:
+            _save_session(session, options)
+        else:
+            perror("The document at %s in not a valid service document" % args[0])
+    else:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+    response_options(options, headers, body)
+
+service.parser = copy.deepcopy(baseparser)
+service.parser.add_option(CREDENTIALS)
+service.parser.add_option(CACHE) 
+service.parser.add_option(RAW) 
+service.parser.add_option(INCLUDE) 
+
+
+def lc(args):
+    """lc: List all the collections  
+usage: lc
+
+   List the collections enumerated in a service document.
+
+"""
+    (options, args) = lc.parser.parse_args(args)
+    if len(args) != 0:
+        perror("Incorrect number of arguments.")
+    
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_service(service)
+    for index, c in enumerate(service.etree().findall(".//{%s}collection" % APP)):
+        etitle = c.find("{%s}title" % ATOM)
+        if None != etitle:
+            title = etitle.text
+        else:
+            title = "untitled"
+
+        print index, " ", title
+
+lc.parser = copy.deepcopy(baseparser)
+
+
+def collection(args):
+    """collection: Select a collection from a service document to work with.
+usage: collection INDEX
+
+   Select the collection by index number from all the
+   collections listed in the service document.
+
+"""
+    this = collection
+    (options, args) = this.parser.parse_args(args)
+    if len(args) != 1:
+        perror("Incorrect number of arguments.")
+    try:
+      int(args[0])
+
+      session = _restore_session(options)
+      if options.credentials:
+          apply_credentials(session, options.credentials)
+          session.credentials = options.credentials
+      if options.cache:
+          session.cache = options.cache
+
+      service, c, entry = session.context.restore(Service, Collection, Entry)
+      require_service(service)
+      index = int(args[0])
+      collections = list(service.iter())
+      if index < 0 or index >= len(collections):
+          perror("INDEX out of range. Expected a number from 0 to %d" % len(collections)-1)
+      c = Collection(collections[index])
+    except ValueError:
+      session = _Session()
+      session.cache = options.cache
+      h = Http(session.cache)
+      session.context = Context(http=h, collection=args[0])
+      if options.credentials:
+          apply_credentials(session, options.credentials)
+          session.credentials = options.credentials
+      c = Collection(session.context)
+
+    headers, body = c.get()
+    if headers.status == 200:
+        if c.etree() and "{http://www.w3.org/2005/Atom}feed" == c.etree().tag:
+            session.context = c.context()
+            _save_session(session, options)
+        else:
+            perror("The document at %s in not a valid collection document" % c.context().collection)
+    else:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+    response_options(options, headers, body)
+
+collection.parser = copy.deepcopy(baseparser)
+collection.parser.add_option(RAW) 
+collection.parser.add_option(INCLUDE) 
+collection.parser.add_option(CREDENTIALS)
+collection.parser.add_option(CACHE) 
+
+def ls(args):
+    """ls: List the entries 
+usage: ls
+
+   List the entries in a collection.
+
+"""
+    (options, args) = ls.parser.parse_args(args)
+    if len(args) != 0:
+        ls.parser.error("Incorrect number of arguments.")
+    
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_collection(collection)
+    stop = 10 
+    if options.all:
+        stop = None
+    for index, e in itertools.islice(enumerate(collection.iter_entry()), stop):
+        etitle = e.find("{%s}title" % ATOM)
+        if None != etitle:
+            title = etitle.text
+        else:
+            title = "untitled"
+
+        print index, " ", title
+
+ls.parser = copy.deepcopy(baseparser)
+ls.parser.add_option("-l", "--all",      dest="all",     action="store_true", help="Print all the entries, not just a subset.") 
+
+def entry(args):
+    """entry: Select an entry from a collection to work with.
+usage: entry [INDEX]
+
+   Select the entry by index number from all the
+   entries listed in the collection.
+
+"""
+    (options, args) = entry.parser.parse_args(args)
+    if len(args) != 1:
+        entry.parser.error("Incorrect number of arguments.")
+
+    session = _restore_session(options)
+
+    if options.credentials:
+        session.credentials = options.credentials
+        apply_credentials(session, options.credentials)
+    if options.cache:
+        session.cache = options.cache
+
+    service, collection, e = session.context.restore(Service, Collection, Entry)
+    require_collection(collection)
+    index = int(args[0])
+    e= Entry(itertools.islice(collection.iter(), index, index+1).next())
+    pprint.pprint( [ e.__dict__ for e in collection.iter( ) ] )
+    headers, body = e.get()
+    if headers.status == 200:
+        if e.etree() and "{http://www.w3.org/2005/Atom}entry" == e.etree().tag:
+            session.context = e.context()
+            _save_session(session, options)
+        else:
+            perror("The document at %s in not a valid entry document" % e.context().entry)
+    else:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+    response_options(options, headers, body)
+
+entry.parser = copy.deepcopy(baseparser)
+entry.parser.add_option(RAW) 
+entry.parser.add_option(INCLUDE) 
+entry.parser.add_option(CREDENTIALS)
+entry.parser.add_option(CACHE) 
+
+def create(args):
+    """create: Create a new member in a collection.
+usage: create [FILENAME]
+
+    Create a new member in the collection. The FILENAME
+    points to the body to POST to the collection. If FILENAME is not 
+    supplied then the input is read from from stdin. If no 
+    content-type is given then it is sniffed from the filename.
+
+"""
+    (options, args) = create.parser.parse_args(args)
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_collection(collection)
+   
+    filename = ''
+    contenttype= options.contenttype
+    if len(args) == 1:
+        filename = args[0]
+        if not contenttype:
+            contenttype = mimetypes.guess_type(filename)
+        f = file(filename, "r")
+        body = f.read()
+        f.close()
+    else:
+        body = sys.stdin.read()
+
+    if not contenttype:
+        perror("Could not determine the mime-type of the data. Please supply it via --content-type.")
+   
+    
+    entry = collection.entry_create(headers={'content-type': contenttype}, body=body)
+    if entry:
+        session.context = entry
+        _save_session(session, options)
+    else:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+
+create.parser = copy.deepcopy(baseparser)
+create.parser.add_option("-c", "--content-type",  dest="contenttype", help="Set the mime-type of the content being sent") 
+
+
+def get(args):
+    """get: Retrieve the entry and store it locally. 
+usage: get [FILENAME]
+
+   Retrieve the entry and store it locally. 
+   Use the given filename, or 'entry' if none 
+   is given.
+
+"""
+    (options, args) = get.parser.parse_args(args)
+    filename = 'entry'
+    if len(args) == 1:
+        filename = args[0]
+    
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_entry(entry)
+    headers, body = entry.get()
+    if headers.status == 200:
+        f = file(filename, "w")
+        f.write(body)
+        f.close()
+    else:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+    response_options(options, headers, body)
+
+get.parser = copy.deepcopy(baseparser)
+get.parser.add_option(RAW) 
+get.parser.add_option(INCLUDE) 
+
+
+def getmedia(args):
+    """ getmedia: Retrieve the entry and store it locally. 
+usage: getmedia [FILENAME]
+
+   Retrieve the associate media entry and store it locally. 
+   Use the given filename, or 'media.{ext}' if none 
+   is given, where {ext} is the appropriate extension for
+   the media type returned.
+
+"""
+    (options, args) = get.parser.parse_args(args)
+    filename = 'media'
+    if len(args) == 1:
+        filename = args[0]
+    
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_entry(entry)
+    headers, body = entry.get_media()
+    if headers.status == 200:
+        f = file(filename, "wb")
+        f.write(body)
+        f.close()
+    else:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+
+getmedia.parser = copy.deepcopy(baseparser)
+
+
+
+
+def put(args):
+    """put: Store the entry back to the server. 
+usage: put [FILENAME]
+
+   Store the entry back to the server.
+   Use the given filename, or 'entry' if none 
+   is given.
+
+"""
+    (options, args) = put.parser.parse_args(args)
+    filename = 'entry'
+    if len(args) == 1:
+        filename = args[0]
+    
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_entry(entry)
+    f = file(filename, "r")
+    body = f.read()
+    f.close()
+    headers, body = entry.put(headers={'content-type': 'application/atom+xml;type=entry'}, body=body)
+    if headers.status != 200:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+
+put.parser = copy.deepcopy(baseparser)
+
+
+
+def putmedia(args):
+    """putmedia: Store the entry back to the server. 
+usage: putmedia [FILENAME]
+
+   Store the media back to the server.
+   Use the given filename, or 'media' if none 
+   is given.
+
+"""
+    (options, args) = put.parser.parse_args(args)
+    filename = 'media'
+    if len(args) == 1:
+        filename = args[0]
+    
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_entry(entry)
+    f = file(filename, "rb")
+    body = f.read()
+    f.close()
+    headers, body = entry.put_media(body=body)
+    if headers.status != 200:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+
+putmedia.parser = copy.deepcopy(baseparser)
+
+
+def delete(args):
+    """delete: Delete the entry from the collection. 
+usage: delete [FILENAME]
+
+   Delete the entry from the collection. 
+
+"""
+    (options, args) = delete.parser.parse_args(args)
+    filename = 'entry'
+    if len(args) == 1:
+        filename = args[0]
+    
+    session = _restore_session(options)
+    service, collection, entry = session.context.restore(Service, Collection, Entry)
+    require_entry(entry)
+    headers, body = entry.delete()
+    if headers.status != 200:
+        perror("Did not receive a good HTTP status code, expected 200, but received %d %s" % (headers.status, headers.reason))
+
+delete.parser = copy.deepcopy(baseparser)
+
+
+# Meta commands -------------------------------------------
+
+def status(args):
+    """status (st): Print the status of the session. 
+usage: status 
+
+   Print the status of the session, including the 
+   URIs of the service document, the collection
+   and the current entry.
+
+"""
+    (options, args) = status.parser.parse_args(args)
+    session = _restore_session(options)
+    print "Service Document : ", session.context.service or "(none)"
+    print "Collection       : ", session.context.collection or "(none)"
+    print "Entry            : ", session.context.entry or "(none)"
+    print "HTTP Cache       : ", session.cache or "(none)"
+    fname = _find_session_file(options)
+    print "Session File     : ", fname or "(none)"
+    print "Credentials File : ", session.credentials or "(none)"
+
+status.parser = copy.deepcopy(baseparser)
+
+# Create an alias of 'st' for 'status'
+st = status
+
+
+def help(args):
+    """usage: apexer <subcommand> [options] [args]
+Apexer command-line client, version %(__version__)s.
+Type 'apexer help <subcommand>' for help on a specific subcommand.
+
+Most subcommands take URI and/or index arguments.
+
+Session State
+   Session state is search for in the following places
+   in the following order:
+
+   - command line argument
+   - $APEXER_CMD_LINE_SESSION
+   - $HOME/.apexer/session
+
+Available subcommands:
+""" 
+    try:
+        name = args[0]
+    except:
+        name = "help"
+    if name in members:
+        print members[name].__doc__ % globals()
+        options = getattr(members[name], "parser", None)
+        if options and name != "help":
+            options.print_help()
+        if name == "help":
+            names = list(members.iterkeys())
+            names.sort()
+            print "  ",
+            print "\n   ".join(names)
+    else:
+        perror("'%s' is not a valid command.\nType 'apexer help' for usage." % cmd)
+
+help.parser = copy.deepcopy(baseparser)
+
+
+members = dict([(k,v) for (k,v) in copy.copy(globals()).iteritems() if not k.startswith("_") and callable(v) and hasattr(v, "parser")])
+
+if __name__ == "__main__":
+    try:
+        cmd = sys.argv[1]
+    except:
+        cmd = "help"
+    args = sys.argv[2:]
+    if cmd not in members:
+        perror("'%s' is not a valid command.\nType 'apexer help' for usage." % cmd)
+    else:
+        members[cmd](args)
