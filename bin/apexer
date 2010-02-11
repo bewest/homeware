@@ -283,7 +283,7 @@ usage: entry [INDEX]
     require_collection(collection)
     index = int(args[0])
     e= Entry(itertools.islice(collection.iter(), index, index+1).next())
-    pprint.pprint( [ e.__dict__ for e in collection.iter( ) ] )
+    pprint.pprint( [ dir( e ) for e in collection.iter( ) ] )
     headers, body = e.get()
     if headers.status == 200:
         if e.etree() and "{http://www.w3.org/2005/Atom}entry" == e.etree().tag:
