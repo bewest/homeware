@@ -1,0 +1,5 @@
+--- 
+server: pubsub.localhost
+jid: switchboard@localhost
+target: pubsub.localhost
+password: switchboard
