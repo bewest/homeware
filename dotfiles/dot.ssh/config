@@ -2,4 +2,5 @@ Host *.lindenlab.com
   ForwardAgent yes
   ForwardX11 yes
   ForwardX11Trusted yes
+  ServerAliveInterval 60
 
