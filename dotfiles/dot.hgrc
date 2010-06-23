@@ -1,0 +1,4 @@
+[extensions]
+# hg glog
+hgext.graphlog =
+
