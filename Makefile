@@ -9,7 +9,7 @@ BIN_FILES=$(patsubst bin/%,~/bin/%,$(wildcard bin/*))
 DOT_FILES=$(wildcard dotfiles/*)
 DOT_HOMES=$(patsubst dotfiles/dot.%,~/.%,$(DOT_FILES))
 
-install: ~/bin/ $(DOT_HOMES)
+install: ~/bin/ dotfiles
 
 dotfiles: $(DOT_HOMES)
         
@@ -22,6 +22,8 @@ diff:
 
 ~/.%: dotfiles/dot.%
 	cp -r $^ $@
+
+.PHONY: dotfiles diff
 
 #####
 # EOF
