@@ -9,8 +9,10 @@ xrdb $HOME/.Xresources
 
 #PATH=/home/dons/bin:$PATH
 
-gnome-power-manager &
-nm-applet &
+#gnome-power-manager &
+#nm-applet &
+
+gnome-session &
 
 FG='#a8a3f7' 
 BG='#3f3c6d' 

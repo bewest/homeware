@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+
+import html5lib
+import sys
+
+
+
+
+if __name__ == '__main__':
+  tree   = html5lib.parse( sys.stdin )
+  print html5lib.serialize( tree, format='xhtml' )
+
+
+
