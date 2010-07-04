@@ -2,3 +2,8 @@
 # hg glog
 hgext.graphlog =
 
+[ui]
+username = Ben West <bewest@gmail.com>
+verbose = True
+
+
