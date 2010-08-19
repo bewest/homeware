@@ -1,5 +1,7 @@
-Host *.lindenlab.com
-  ForwardAgent yes
+
+ForwardAgent yes
+
+Host *.meraki.com
   ForwardX11 yes
   ForwardX11Trusted yes
   ServerAliveInterval 60
