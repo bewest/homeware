@@ -23,6 +23,9 @@ diff_tracked_home=$(foreach F,$(1),$(diff) $(F) $(call home2dot,$(F)))
 map = $(foreach a,$(2),$(call $(1),$(a)))
 
 DIFF_TARGETS=$(call name2diff,$(DOT_HOMES))
+CP_FILE=cp -v
+CP_DIR=cp -vr
+
 
 all:
 
@@ -44,9 +47,9 @@ diff-dotfiles: all $(DIFF_TARGETS)
   
 
 $(DIFF_TARGETS):
-ifdef INC
+ifdef INC 
 	$(diff) $(call home2dot,$(call diff2name,$@)) $(call diff2name,$@)
-else
+else 
 	# $(diff) $(call home2dot,$(call diff2name,$@)) $(call diff2name,$@) || echo -n ''
 	@$(diff) $(call home2dot,$(call diff2name,$@)) $(call diff2name,$@) || echo -n ''
 endif
@@ -59,7 +62,7 @@ diff-dotfiles-ssh:
 
 # DOT_HOMES
 ~/.%: dotfiles/dot.%
-	cp -vr $^ $@
+	test -f $^ &&  $(CP_FILE) $^ $@ || $(CP_DIR) $^/* $@
 
 .PHONY: dotfiles diff diff-* $(DIFF_PREREQS) $(DIFF_TARGETS)
 

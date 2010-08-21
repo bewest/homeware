@@ -1,6 +1,14 @@
+#
+# bewest's HG dotfile
+#
+
+# include host config.
+%include .hgrc.d/local.hgrc
+
 [extensions]
 # hg glog
 hgext.graphlog =
+
 
 [ui]
 ignore.other=~/.hgignore
