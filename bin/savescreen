@@ -7,9 +7,12 @@ SS_HOME=~/Pictures/Photos/savescreen
 
 NEW=$SS_HOME/screenshot.new.png
 USE=$SS_HOME/screenshot.use.png
+OLD=$SS_HOME/screenshot.old.png
 
 scrot $NEW
+sleep 3
 mv $NEW $USE
+cp $USE $OLD
 
 echo -n "DONE taking screenshot "
 date "+%FT%T %Z"
