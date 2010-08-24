@@ -3,7 +3,7 @@
 #
   
 
-MAILTO=
+MAILTO=""
 # m h dom mon dow command
   *	*	*	*	*	/home/bewest/bin/savescreen | logger -t savescreeen
 #####
