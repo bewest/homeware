@@ -1,0 +1,10 @@
+#
+# vim: set ft=crontab:noexpandtab:ts=4:sw=4 :
+#
+  
+
+MAILTO=
+# m h dom mon dow command
+  *	*	*	*	*	/home/bewest/bin/savescreen | logger -t savescreeen
+#####
+# EOF

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo -n "BEGIN taking screenshot "
+date "+%FT%T %Z"
+
+SS_HOME=~/Pictures/Photos/savescreen
+
+NEW=$SS_HOME/screenshot.new.png
+USE=$SS_HOME/screenshot.use.png
+
+scrot $NEW
+mv $NEW $USE
+
+echo -n "DONE taking screenshot "
+date "+%FT%T %Z"
+#####
+# EOF

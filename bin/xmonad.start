@@ -19,7 +19,7 @@ BG='#3f3c6d'
  
  
 while true ; do date ; sleep 60 ; done | \
-             dzen2 -e '' -x 200 -w 80 -ta l -fg $FG -bg $BG -p 5 &
+             dzen2 -e '' -x 0 -w 400 -ta l -fg $FG -bg $BG -p 5 &
  
 dbus-launch --exit-with-session xmonad 
 
