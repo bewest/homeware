@@ -11,6 +11,7 @@ OLD=$SS_HOME/screenshot.old.png
 
 scrot $NEW
 sleep 3
+mv $USE $OLD
 mv $NEW $USE
 cp $USE $OLD
 
