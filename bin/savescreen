@@ -3,17 +3,27 @@
 echo -n "BEGIN taking screenshot "
 date "+%FT%T %Z"
 
-SS_HOME=~/Pictures/Photos/savescreen
+SS_HOME=$HOME/Pictures/Photos/savescreen
 
 NEW=$SS_HOME/screenshot.new.png
 USE=$SS_HOME/screenshot.use.png
 OLD=$SS_HOME/screenshot.old.png
 
+set -e
+
+export DISPLAY=:0.0
+
+
+echo "FOO" > /dev/stderr
+
 scrot $NEW
 sleep 3
-mv $USE $OLD
-mv $NEW $USE
-cp $USE $OLD
+if [[ -f $USE ]] ; then
+  cp -v $USE $OLD
+  sync
+fi
+mv -v $NEW $USE
+sync
 
 echo -n "DONE taking screenshot "
 date "+%FT%T %Z"
