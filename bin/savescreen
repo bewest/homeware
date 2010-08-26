@@ -1,31 +1,71 @@
 #!/bin/bash
-
-echo -n "BEGIN taking screenshot "
-date "+%FT%T %Z"
+#
+# Author: Ben West <bewest+homeware@gmail.com>
+#
+# This script uses scrot to take a screenshot and store it in SS_HOME.
+# It keeps the old one.
+#
 
 SS_HOME=$HOME/Pictures/Photos/savescreen
 
-NEW=$SS_HOME/screenshot.new.png
+NEW=$SS_HOME/.screenshot.new.png
 USE=$SS_HOME/screenshot.use.png
 OLD=$SS_HOME/screenshot.old.png
 
+export DISPLAY=:0.0
 set -e
 
-export DISPLAY=:0.0
+#
+# FUNCTION; MAIN below
+#
+function PROLOGUE {
+  echo -n "BEGIN taking screenshot "
+  date "+%FT%T %Z"
+  echo "SCREENSAVER STDERR" > /dev/stderr
+  
+}
+
+function EPILOGUE {
+  echo -n "DONE taking screenshot "
+  date "+%FT%T %Z"
+  
+}
+
+function EXIT_IF_GS {
+  # gnome-screensaver-command -q
+  # The screensaver is inactive
+  # The screensaver is not inhibited
+  # gnome-screensaver-command  -q
+  # The screensaver is active
+  # The screensaver is not inhibited
+  GS="gnome-screensaver-command -q"
+  screensaver_status=$( $GS | grep active )
+  status=$( echo $screensaver_status | cut -d' ' -f 4 )
+  if [[ "$status" == "active" ]] ; then
+    echo "CANCEL: $screensaver_status"
+    EPILOGUE
+    exit 1
+  fi
+
+}
 
 
-echo "FOO" > /dev/stderr
+###############################
+#
+# MAIN
+#
 
-scrot $NEW
+PROLOGUE
+EXIT_IF_GS
+
 sleep 3
 if [[ -f $USE ]] ; then
   cp -v $USE $OLD
   sync
 fi
-mv -v $NEW $USE
+scrot $NEW && mv -v $NEW $USE || echo "$? FAILED to create $NEW"
 sync
 
-echo -n "DONE taking screenshot "
-date "+%FT%T %Z"
+EPILOGUE
 #####
 # EOF

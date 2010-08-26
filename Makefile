@@ -36,7 +36,7 @@ ignore:
 	@echo DOT_HOMES
 	@echo $(DOT_HOMES) | xargs -n 1 echo
 
-install: ~/bin/ dotfiles
+install: bin dotfiles
 
 dotfiles: $(DOT_HOMES)
         
@@ -56,6 +56,8 @@ endif
 
 diff-dotfiles-ssh:
 	diff -ur ~/.ssh/ dotfiles/dot.ssh/
+
+bin: ~/bin/
 
 ~/bin/: bin/
 	hg archive -t files -I $^ ~
