@@ -4,6 +4,6 @@
   
 MAILTO=""
 # m h dom mon dow command
-  *	*	*	*	*	/home/bewest/bin/savescreen 2>&1 | logger -t savescreeen
+  */3	*	*	*	*	/home/bewest/bin/savescreen 2>&1 | logger -t savescreeen
 #####
 # EOF
