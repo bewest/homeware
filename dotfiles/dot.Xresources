@@ -1,5 +1,5 @@
 
-!xterm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
+xterm*font: -Misc-Fixed-Medium-R-Normal--20-200-75-75-C-100-ISO10646-1
 
 
 !XTerm*foreground: gray90
@@ -11,6 +11,6 @@ XTerm*reverseVideo: true
 XTerm*visualBell: true
 XTerm*saveLines: 5000
 !XTerm*scrollBar: true
-XTerm*font: -*-clean-medium-r-*--14-*-*-*-*-60-*-*
+!XTerm*font: -*-clean-medium-r-*--14-*-*-*-*-60-*-*
 XTerm*color4: SkyBlue
 XTerm*color12: SkyBlue

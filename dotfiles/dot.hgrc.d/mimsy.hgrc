@@ -2,5 +2,8 @@
 username = Ben West <bewest@gmail.com>
 verbose = True
 
+[paths]
+bb = ssh://hg@bitbucket.org/bewest
+
 #####
 # EOF

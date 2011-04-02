@@ -8,10 +8,14 @@
 [extensions]
 # hg glog
 hgext.graphlog =
-
+color =
 
 [ui]
 ignore.other=~/.hgignore
+
+[extdiff]
+#cmd.cdiff = colordiff
+#opts.cdiff = -uprN
 
 #####
 # EOF
