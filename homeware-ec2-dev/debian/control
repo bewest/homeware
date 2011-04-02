@@ -1,0 +1,24 @@
+Source: homeware-ec2-dev
+Maintainer: Ben West <bewest@gmail.com>
+Section: web
+Priority: extra
+Standards-Version: 3.7.2
+Build-Depends: yada (>= 0.55), debhelper
+Homepage: http://bitbucket.org/~bewest/homeware
+
+
+Package: homeware-ec2-dev
+Architecture: any
+Depends: ${misc:Depends}, ${homeware-ec2-dev:Depends},
+         build-essential,
+         mercurial,
+         lighttpd,
+         python,
+         python-cherrypy3,
+         python-sqlite,
+         python-cairo,
+         python-setuptools
+Description: Metapackage for web development environmet in ec2.
+ This package should enable a sane environment when combined with ec2 and
+ ubuntu's cloudinit.
+

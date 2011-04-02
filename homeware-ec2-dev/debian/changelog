@@ -1,0 +1,6 @@
+homeware-ec2-dev (ec2-dev-1) unstable; urgency=low
+
+  * Initial Debian version.
+
+ -- Ben West <bewest@gmail.com>  Sat, 02 Apr 2011 13:22:26 -0700
+

@@ -1,0 +1,18 @@
+Section: libs
+Priority: extra
+Package: homeware-ec2-dev
+Architecture: any
+Maintainer: Ben West <bewest@gmail.com>
+Standards-Version: 3.8.3
+Homepage: http://bitbucket.org/~bewest/homeware
+Depends: build-essential,
+         mercurial,
+         python,
+         python-cherrypy3,
+         python-sqlite,
+         python-cairo,
+         python-setuptools
+Description: Metapackage for web development environmet in ec2.
+ This package should enable a sane environment when combined with ec2 and
+ ubuntu's cloudinit.
+
