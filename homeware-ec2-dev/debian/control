@@ -2,8 +2,8 @@ Source: homeware-ec2-dev
 Maintainer: Ben West <bewest@gmail.com>
 Section: web
 Priority: extra
-Standards-Version: 3.7.2
-Build-Depends: yada (>= 0.55), debhelper
+Standards-Version: 3.8.4
+Build-Depends: yada (>= 0.55), debhelper (>= 7)
 Homepage: http://bitbucket.org/~bewest/homeware
 
 

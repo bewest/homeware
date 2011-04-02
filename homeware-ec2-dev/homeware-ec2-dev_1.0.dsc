@@ -8,23 +8,23 @@ Architecture: any
 Version: 1.0
 Maintainer: Ben West <bewest@gmail.com>
 Homepage: http://bitbucket.org/~bewest/homeware
-Standards-Version: 3.7.2
-Build-Depends: yada (>= 0.55), debhelper
+Standards-Version: 3.8.4
+Build-Depends: yada (>= 0.55), debhelper (>= 7)
 Checksums-Sha1: 
- 64942ad2ddadb9fb54b04003a3314e2a0b2a53ab 1910 homeware-ec2-dev_1.0.tar.gz
+ c08ed377ef14f648a4c53e9c19ffb20f7ef8bc32 1917 homeware-ec2-dev_1.0.tar.gz
 Checksums-Sha256: 
- e6e81b565046c4991e150fffbfa022885137a5f9338cfa6db2105da7c372d95e 1910 homeware-ec2-dev_1.0.tar.gz
+ cfcc21672b2a5901007107f34eb05b8ca7918a10512b256c7ca05c4eef184489 1917 homeware-ec2-dev_1.0.tar.gz
 Files: 
- 94106481a3a413bc64b294b94d989a46 1910 homeware-ec2-dev_1.0.tar.gz
+ 7098f56bf3d345dfe9b1057e6dd4bbc1 1917 homeware-ec2-dev_1.0.tar.gz
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iQEcBAEBAgAGBQJNl5fEAAoJEMR95C1jzbhzaHAH+gKAtjssrvPRGolfnYUOQ5AH
-4rB+sQdlgu8s1ewczVADJbKW3OjO2Y4I6A/3sumKalAUp9XbOPwySfQlglgotjL8
-ZykycQy4eFPuy6qFzaGxRKOFdZpNyhxzyqYfgDQ4E0so2C+IhsC+0xI6+aDbbD/Y
-S3Au0GGkdmr7MleI7dGO3qfGNppv2yYmMgpSIgD+kM8RG6UsKszJDrwCI1DndQ80
-X6Kg/NzO4VeMuCMLNxrkMANf6UL+TY2JPt/Ei8e9ni/mnerwwgQHXOOC1ZgqvA7x
-MTW/9r7r8fUpF5wq3CZyxAoaOwqVEC6IovS7hr0Cx0gGkP0Tfj9N+RRqPyOsZDI=
-=HuFH
+iQEcBAEBAgAGBQJNl5nuAAoJEMR95C1jzbhzQ+MH/jSzuZOknx/uIbXmzbJo12ke
+oat/yArU1i5P+C85cqoGOA1O+KihR1va+HG99NObFg3I3/TTiFfJIJ1BlPWMbSeb
+SPpiHNh1E8iRvcECESSHJD8BpsJoEayeKdCLebBLgqAWZ9SvaZJVMgTUPF2o94KH
+VKjzV8myhgssKVitb3d+UBBSRGieDxfrDF+xgOHgkQNyJv0yCp7Ufp5H43fs/1GO
+/Uec5ITr4joNxee4SPkevmuyj97C8q/d5NXRGfDw8lrtY5kIpq9iit43xgpoFovg
+Cpn48o8LMj8fbUGwKK06fsM9B8r7TFfnlkwTNBLaseiU9Ze29yXSXA6URuTET5M=
+=Rh/w
 -----END PGP SIGNATURE-----

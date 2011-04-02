@@ -2,7 +2,7 @@
 Hash: SHA1
 
 Format: 1.8
-Date: Sat, 02 Apr 2011 14:40:12 -0700
+Date: Sat, 02 Apr 2011 14:49:30 -0700
 Source: homeware-ec2-dev
 Binary: homeware-ec2-dev
 Architecture: source i386
@@ -18,26 +18,26 @@ Changes:
  .
    * First version
 Checksums-Sha1: 
- fca8093379fb0de5afc153fddefee6a7483f44de 1070 homeware-ec2-dev_1.0.dsc
- 64942ad2ddadb9fb54b04003a3314e2a0b2a53ab 1910 homeware-ec2-dev_1.0.tar.gz
- b9858ee67576e3f57aee44477efd0e9024fc32c1 2274 homeware-ec2-dev_1.0_i386.deb
+ fc6232e8a390b59bcb3538dce4725df9bd819a9c 1077 homeware-ec2-dev_1.0.dsc
+ c08ed377ef14f648a4c53e9c19ffb20f7ef8bc32 1917 homeware-ec2-dev_1.0.tar.gz
+ 4b4b67b0f7a98b34d7195381708488938b6d959e 2272 homeware-ec2-dev_1.0_i386.deb
 Checksums-Sha256: 
- 72f1267ea041365a22591c245a82b0d8860035d670fb242197bc6a32a150f7fc 1070 homeware-ec2-dev_1.0.dsc
- e6e81b565046c4991e150fffbfa022885137a5f9338cfa6db2105da7c372d95e 1910 homeware-ec2-dev_1.0.tar.gz
- 8617511743934d144b25e60dd727f5ffa7e5fec04b555b9c0dd5542d3dfbc42a 2274 homeware-ec2-dev_1.0_i386.deb
+ 9c93c3bde52f5c8a12ea858a7ebc1c584c601e3c538a3f1d5ffccdcdaa17b32b 1077 homeware-ec2-dev_1.0.dsc
+ cfcc21672b2a5901007107f34eb05b8ca7918a10512b256c7ca05c4eef184489 1917 homeware-ec2-dev_1.0.tar.gz
+ 092d44ee2e831d27b15662c7f39ce5d3ebb1687edbb7241d61c0c933218d218f 2272 homeware-ec2-dev_1.0_i386.deb
 Files: 
- 755a13c01aa65f023397981d6dd3bd8c 1070 web extra homeware-ec2-dev_1.0.dsc
- 94106481a3a413bc64b294b94d989a46 1910 web extra homeware-ec2-dev_1.0.tar.gz
- ef74bfbd1af18b61f9306a30b61996a9 2274 web extra homeware-ec2-dev_1.0_i386.deb
+ 4e34d6bdd5e441621d7a14a9cf3acdec 1077 web extra homeware-ec2-dev_1.0.dsc
+ 7098f56bf3d345dfe9b1057e6dd4bbc1 1917 web extra homeware-ec2-dev_1.0.tar.gz
+ daa6b86b73238de6fb163b57718cf581 2272 web extra homeware-ec2-dev_1.0_i386.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iQEcBAEBAgAGBQJNl5fEAAoJEMR95C1jzbhz46IIALWEEYjV2a7T/d3fh9+MBpO/
-3nt8RTlPOIZbwhwkXAeM4eoIJVIAT1ZQCqOgvPw8Thlb8j8X8cIvOAz2M3246eRz
-8qA/DHOP4USfggobIWcn+OQdV+kPEk9QeXJVwLdTe0/BOytom2zqeeCliJAve/CC
-k4/mlU6E2d7ziPIaByzSzDoxLCOdw7xkPUr9R5uBNV7k7qeY69oEz5RujU5AkGE+
-dhTqpwyKY6HAkx7i93d8NGG0EzqTfhADMWMQKbFZqBU1DrbzYZFgAl/ZJUivUD8R
-5HRp6dSSZOnnPMFQa9FnP4XmaNzO2dNz+Hkvdv5byMtNIFkkCCjW2ii1QexIPrk=
-=CS1s
+iQEcBAEBAgAGBQJNl5nvAAoJEMR95C1jzbhzAOsIAKscwt7PRZzXu3isGlaFkLGP
+qJWvLA3196iH7mjVPodOugA7PKUrSe/M8EICoHYmMTXLf6rssTAmuFY9TRB8YUlq
+Xe3BqmERrsPRhNL+rC9Z88N2nPsE6zlQK9D5VsYtI9n+AFfjsOYeNIx8TZMalDwq
+NTWOzKT0MguiGXGNDfYWWBrx7EOhSraiYtAG8lVb3JlWRhn8JsjzMzBztOgwy75f
+ZYp1B04TiTn2oVsJEVnO20p0OsIlff+7Oc+/ogk74jRxwf+t/yon8xPB3CLU6Uul
+ieQnhaChRnukr378mKA2r1Zxf0ArfFQdttxoGFXcjcX/2zsc4aHyvn5DCKLiDSk=
+=2o0k
 -----END PGP SIGNATURE-----
