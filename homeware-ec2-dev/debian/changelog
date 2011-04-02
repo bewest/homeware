@@ -1,6 +1,5 @@
-homeware-ec2-dev (ec2-dev-1) unstable; urgency=low
+homeware-ec2-dev (0.1) lucid; urgency=low
 
-  * Initial Debian version.
+  * Initial release.
 
- -- Ben West <bewest@gmail.com>  Sat, 02 Apr 2011 13:22:26 -0700
-
+ -- Ben West <bewest@gmail.com>  Sat, 02 Apr 2011 16:07:36 -0700

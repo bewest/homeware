@@ -1,11 +1,12 @@
-Source: homeware-ec2-dev
+#Source: homeware-ec2-dev
 Maintainer: Ben West <bewest@gmail.com>
 Section: web
 Priority: extra
 Standards-Version: 3.8.4
-Build-Depends: yada (>= 0.55), debhelper (>= 7)
+#Build-Depends: debhelper (>= 7)
 Homepage: http://bitbucket.org/~bewest/homeware
 
+Changelog: debian/changelog
 
 Package: homeware-ec2-dev
 Architecture: any
