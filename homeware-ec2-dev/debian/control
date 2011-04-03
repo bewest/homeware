@@ -1,4 +1,4 @@
-#Source: homeware-ec2-dev
+Package: homeware-ec2-dev
 Maintainer: Ben West <bewest@gmail.com>
 Section: web
 Priority: extra
@@ -8,13 +8,15 @@ Homepage: http://bitbucket.org/~bewest/homeware
 
 Changelog: debian/changelog
 
-Package: homeware-ec2-dev
 Architecture: any
 Depends: ${misc:Depends}, ${homeware-ec2-dev:Depends},
          build-essential,
          mercurial,
          lighttpd,
          python,
+         libfreetype6-dev,
+         pkg-config,
+         python-dev,
          python-cherrypy3,
          python-sqlite,
          python-cairo,
