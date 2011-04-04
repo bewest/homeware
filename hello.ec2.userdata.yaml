@@ -1,0 +1,22 @@
+#cloud-config
+
+
+apt_update: true
+apt_upgrade: true
+
+apt_sources:
+  - source: "ppa:bewest/ppa"
+  - source: deb http://ppa.launchpad.net/bewest/ppa/ubuntu lucid main
+  - source: deb-src http://ppa.launchpad.net/bewest/ppa/ubuntu lucid main
+
+
+
+packages:
+  - homeware-ec2-dev
+  - python-numpy
+
+ssh_import_id: [bewest]
+
+
+#####
+# EOF
