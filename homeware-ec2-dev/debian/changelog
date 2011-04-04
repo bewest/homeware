@@ -1,3 +1,9 @@
+homeware-ec2-dev (0.1ubuntu1) lucid; urgency=low
+
+  * bump
+
+ -- Ben West <bewest@mimsy>  Sun, 03 Apr 2011 20:15:49 -0700
+
 homeware-ec2-dev (0.1) lucid; urgency=low
 
   * Initial release.
