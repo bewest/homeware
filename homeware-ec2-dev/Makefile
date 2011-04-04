@@ -2,14 +2,16 @@
 
 all:
 
-test: link
+lint: lintian
 
-link: build/debian
-	ln -s debian/ build/debian
-	#test -d build/debian && echo "proceed to build" \
-	#|| ln -s debian/ build/debian
+lintian:
+	lintian -i build/*.changes
 
-build:
+build/debian:
+	# Set up build directory
+	ln -s -t build/ ../debian 
+
+build: build/debian
 	( cd build;  \
     ../equivs-build --source ./debian/control; \
     cd .. )
@@ -17,7 +19,7 @@ build:
 clean:
 	rm -Rf build/*
 
-.PHONY: build
+.PHONY: build lint lintian clean
 
 #####
 # EOF

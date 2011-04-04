@@ -10,6 +10,7 @@ syntax: glob
 no-hg.*
 bin/xmonad.start
 
+homeware-ec2-dev/build/*
 
 #####
 # EOF
