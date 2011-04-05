@@ -134,6 +134,7 @@ Debian/Ubuntu
   * http://www.debian.org/doc/manuals/developers-reference/pkgs.html#distribution
   * https://wiki.ubuntu.com/PackagingGuide/Basic#changelog
   * https://wiki.kubuntu.org/PackagingGuide/Howtos/CDBS
+  * http://paulstamatiou.com/how-to-getting-started-with-amazon-ec2
 
 
 Building
@@ -145,7 +146,18 @@ changelog.  There are tools: equivs, and dh_make that help with this.
 Debian includes hooks through maintainer scripts for doing things after
 install, or to uninstall.
 
-Once a package 
+Once a package is built, you can upload it to your PPA.
+The PPA is subject to a great number of policies.  Most of
+the policies are oriented around targeting the
+distribution channel, which Ubuntu and Debian both take
+pretty seriously.  They both have stringent quality
+controls on what software is considered stable and
+compatible, which means developing on them makes it easy
+to transition  to a production environment.  When software
+is added to a repository, it must advertise a distribution
+that is compatible with the version of ubuntu you intend
+to run.
+
 
 
 .. [#]: Personal Package Archive

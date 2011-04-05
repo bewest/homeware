@@ -1,0 +1,20 @@
+
+
+I'm having trouble getting a recent version of matplotlib.
+Debian ships < 1.0 and I need at least 1.0.  The latest
+release is 1.0.1.x.
+
+Long ago I installed it from source on my laptop, and
+failed to take notes on the steps required to reproduce.
+There are two PPAs from individuals that have been working
+on getting MPL included in ubuntu's natty, which will
+unlock upgrades for everyone.
+
+Please merge matplotlib 1.0.1-1 (universe) from debian
+experimental main 
+https://bugs.launchpad.net/ubuntu/+source/matplotlib/+bug/607395
+
+1.0.1 is available from a debian archive:
+http://packages.debian.org/experimental/python-matplotlib
+
+

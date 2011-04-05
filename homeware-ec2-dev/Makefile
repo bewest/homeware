@@ -1,4 +1,6 @@
 
+DEBEMAIL=bewest@gmail.com
+DEBFULLNAME="Ben West"
 
 all:
 
@@ -16,10 +18,13 @@ build: build/debian
     ../equivs-build --source ./debian/control; \
     cd .. )
 
+incr:
+	dch -i
+
 clean:
 	rm -Rf build/*
 
-.PHONY: build lint lintian clean
+.PHONY: build lint lintian dch clean
 
 #####
 # EOF

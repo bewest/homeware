@@ -1,3 +1,63 @@
+====
+TODO
+====
+
+
+Projects
+========
+
+EC2
+---
+
+  * bewest-lighttpd-config
+    Need to get a webserver on 80 to proxy to the fastcgi
+    or application server as needed.
+
+  * bewest-euclidean-ui
+  * bewest-euclidean-ui-config
+  * install matplotlib 
+  * install lilypond
+  * bzr / git / mercurial
+    * somehow need to sync my user's home dir and creds.
+      * creds done through launchpad / package
+      * home dir?
+
+  * advertise availability:
+    * ping back to register dns?
+
+  * give params to simply.py
+
+    * refactor simple.py?
+      * handlers
+      * server
+      * config
+      * log
+      * run
+
+  * bewest-diabetes: developing tools to manage
+    diabetes. currently mock of eucliui lives here.
+
+  * bewest-insulaudit: multi-language library with test
+    suites, documentation, and tools to audit diabetes
+    therapy.
+
+  * bewest-insulauditor: application of insulaudit,
+    eucliui
+
+?????
+-----
+
+The OL modifications need serverside support.  Would help
+to package as independent library.  Name might be
+euclidean-ui??? eucliui?
+
+It's based on Raskin's concept of pan/zoom interfaces
+focusing on panning and zooming to help trigger our
+navigating instincts.
+
+
+Misc
+----
 
 Configure vim for it's all text:
   * gmail
@@ -10,3 +70,31 @@ Configure vim for it's all text:
 Meraki:
   * .comm* ?
 
+More project ideas
+~~~~~~~~~~~~~~~~~~
+  * lb-fastcgi ? would be nice to have a fastcgi to manage
+    lighttpd's entire backend pool.  Combined with a
+    monitoring solution a hypothetical UI would allow you
+    to configure and monitor the backends of a webserver.
+  * hello-music: A suite of primers on music.
+
+    * hello-rhythm
+      * measuring time
+        * counting
+        * rests vs sounding
+      * generating pulses
+        * subdividing
+      * introducing notation
+      * finding beats
+
+    * music-exposition: A set of tools, maybe an
+      application, to create / view a presentation of
+      music.  The presentation should enable scrolling
+      across a representation of music as the music plays,
+      and should allow compiling multimedia from a variety
+      of sources.  Uses sphinx/cherrypy/eucliui.
+
+
+
+#####
+# EOF
