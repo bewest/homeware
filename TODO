@@ -2,6 +2,32 @@
 TODO
 ====
 
+Kind of stuck right now on the pump protocol.  I can
+exchange messages with the stick, but I cannot
+successfully execute the radio commands.
+
+Also stuck on OL integration.  OpenLayers is very
+granular, but the authors made the assumption that LonLat
+are measured in degrees and that X and Y should be scaled
+equivalently.  I monkey patched OL so that X and Y are
+scaled in dependently in arbitrary units.  While markers
+show up in the right place and OL provides a nice pan/zoom
+container for charts, not all of OL's features are
+working.  They have a very nice Vector concept that allows
+placing arbitrary content in a layer.  While I patched the
+SVG layer, the text function does not work, and I'm not
+convinced I've mastered the basics yet.
+
+In the stock version, OL shows some markers (red dots) and
+some text in a custom SVG layer.  Some of the markers have
+a transformation applied directly to the LonLat of the
+point as it's added to the map to help visualize what the
+"map" looks like with rescaled LonLats.
+
+In my version (glucose) I've patched Map's, Layer's, and
+SVG's calls to getResolution to independently calculate X
+and Y.  The SVG markers show up in the right spots, but
+the other svg elements aren't working yet.
 
 Projects
 ========
@@ -13,8 +39,6 @@ EC2
     Need to get a webserver on 80 to proxy to the fastcgi
     or application server as needed.
 
-  * bewest-euclidean-ui
-  * bewest-euclidean-ui-config
   * install matplotlib 
   * install lilypond
   * bzr / git / mercurial
@@ -25,24 +49,47 @@ EC2
   * advertise availability:
     * ping back to register dns?
 
-  * give params to simply.py
 
-    * refactor simple.py?
-      * handlers
-      * server
-      * config
-      * log
-      * run
+  * bewest/euclidean-ui
+  * bewest/euclidean-ui-config
 
-  * bewest-diabetes: developing tools to manage
+  * bewest/diabetes: developing tools to manage
     diabetes. currently mock of eucliui lives here.
 
-  * bewest-insulaudit: multi-language library with test
+    * move src/mock to git/bewest/eucliu or similar.
+
+  * bewest/insulauditor: web-app to manage
+
+  * bewest/insulaudit: multi-language library with test
     suites, documentation, and tools to audit diabetes
     therapy.
 
-  * bewest-insulauditor: application of insulaudit,
-    eucliui
+  * bewest/carelink - Copy of analysis.
+
+  * bewest/carelink-python -
+    Contains outlines for what should be insulaudit.
+
+    * move code to insulaudit
+    * PUMP SUPPORT
+      * graph byte sequences using gnuplot
+      * write log replayer
+      * more docs
+      * more captures?
+    * API:
+      * graphing
+      * pump
+      * clean up input/output formats
+        * indivo
+    * give params to simply.py
+      * refactor simple.py?
+        * handlers
+        * server
+        * config
+        * log
+        * run
+
+  * bewest/insulauditor: application of insulaudit,
+    eucliui.  Blocked on euclidean-ol or similar.
 
 ?????
 -----
@@ -93,6 +140,7 @@ More project ideas
       across a representation of music as the music plays,
       and should allow compiling multimedia from a variety
       of sources.  Uses sphinx/cherrypy/eucliui.
+
 
 
 
