@@ -57,6 +57,8 @@ EC2
     diabetes. currently mock of eucliui lives here.
 
     * move src/mock to git/bewest/eucliu or similar.
+    * trailing500
+    * fork OL?
 
   * bewest/insulauditor: web-app to manage
 
