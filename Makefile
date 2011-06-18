@@ -1,6 +1,9 @@
 ########################################################
 #
 # Used to manage my homeware.
+# 
+# TODO: Add some documentation.  It's been long enough that I now find
+#       this confusing.
 #
 #
 
