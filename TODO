@@ -35,6 +35,33 @@ Projects
 EC2
 ---
 
+# find reliable ami
+  canonical user id: 
+  The Official AMI Ids can be obtained from
+  http://uec-images.ubuntu.com. Official Ubuntu AMIs are
+  published by the 'Canonical' user, with Amazon ID
+  '099720109477'.
+  http://uec-images.ubuntu.com/releases/10.04/release/
+us-west-1 
+32-bit
+ebs
+ami-ebbfefae
+ec2-run-instances ami-ebbfefae             \
+                  --instance-type t1.micro \
+                  --region us-west-1       \
+                  --key ${EC2_KEYPAIR_US_WEST_1}
+
+us-west-1
+64-bit
+ebs
+ami-f5bfefb0
+ec2-run-instances ami-f5bfefb0             \
+                  --instance-type t1.micro \
+                  --region us-west-1       \
+                  --key ${EC2_KEYPAIR_US_WEST_1} 
+
+  Alestic:
+
   * bewest-lighttpd-config
     Need to get a webserver on 80 to proxy to the fastcgi
     or application server as needed.

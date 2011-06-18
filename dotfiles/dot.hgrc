@@ -9,6 +9,10 @@
 # hg glog
 hgext.graphlog =
 color =
+pager =
+
+[pager]
+pager = LESS='FSRX' less
 
 [ui]
 ignore.other=~/.hgignore
