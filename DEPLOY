@@ -1,0 +1,38 @@
+.. -*- restructuredtext -*-
+
+=========
+Deploying
+=========
+
+Server
+~~~~~~~~~~~~~
+Assume there is a server already running with a git/hg repo.
+
+Deploying goes something like:
+
+  Capistrano / Fabric:
+  https://github.com/capistrano/capistrano/wiki
+  http://stii.co.za/python/switched-to-python-fabric/
+    Wraps common commands into composable tasks.
+    
+    * copy branch changes to deploy branch
+    * update running instances with new code
+    * monitor/list/create instances
+  
+  Capistrano: Ruby, very popular
+  Fabric: python, newer, less mature
+
+Starting Instances
+~~~~~~~~~~~~~~~~~~
+
+Custom debian packages are hosted in launchpad, and cloudinit.  Cloudinit will
+add the appropriate PPAs and install the right packages automatically using APT.
+
+APT packages are maintained using simple text files.
+
+https://help.ubuntu.com/community/CloudInit
+Launchpad itself is opensource and run in EC2, which means they have lots of
+useful notes.
+
+
+
