@@ -11,6 +11,14 @@ hgext.graphlog =
 color =
 pager =
 
+rebase =
+
+hgext.bookmarks =
+hggit =
+
+[git]
+#intree = true
+
 [pager]
 pager = LESS='FSRX' less
 
