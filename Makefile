@@ -63,7 +63,11 @@ diff-dotfiles-ssh:
 bin: ~/bin/
 
 ~/bin/: bin/
-	hg archive -t files -I $^ ~
+	#hg archive -t files -I $^ ~
+	#echo T $^  D $@
+	git archive --format=tar HEAD $^ |  ( cd ~;  tar -xvf - )
+
+
 
 # DOT_HOMES
 ~/.%: dotfiles/dot.%
