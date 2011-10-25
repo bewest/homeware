@@ -6,7 +6,7 @@
 !XTerm*background: black
 
 XTerm*faceName: Dejavu
-XTerm*faceSize: 6
+XTerm*faceSize: 7
 
 ! Xterm customized defaults
 XTerm*reverseVideo: true
@@ -101,12 +101,12 @@ XTerm*color12: SkyBlue
 *SolarBlue*color15: S_base3
 
 
-*SolarBlue*faceSize1: 1
-*SolarBlue*faceSize2: 4
-*SolarBlue*faceSize3: 5
-*SolarBlue*faceSize4: 6
-*SolarBlue*faceSize5: 8
-*SolarBlue*faceSize6: 10
+XTerm*faceSize1: 1
+XTerm*faceSize2: 5
+XTerm*faceSize3: 7
+XTerm*faceSize4: 10
+XTerm*faceSize5: 12
+XTerm*faceSize6: 15
 
 
 
