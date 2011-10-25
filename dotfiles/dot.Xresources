@@ -112,44 +112,45 @@ XTerm*color12: SkyBlue
 
 !!!! SolarLight
 
-*SolarLight*background: S_base03
-*SolarLight*foreground: S_base00
+*SolarLight*background: S_base00
+*SolarLight*foreground: S_base03
 *fading: 40
-*SolarLight*fadeColor: S_base03
-*SolarLight*cursorColor: S_base1
-*SolarLight*pointerColorBackground:S_base01
-*SolarLight*pointerColorForeground:S_base1
+*SolarLight*fadeColor: S_base1
+*SolarLight*cursorColor: S_base03
+*SolarLight*pointerColorBackground: S_base1
+*SolarLight*pointerColorForeground: S_base01
+XTerm*SolarLight*reverseVideo: true
 
 !! black dark/light
-*SolarLight*color0: S_base02
-*SolarLight*color8: S_base03
+*SolarLight*color0: S_base03
+*SolarLight*color8: S_base02
 
 !! red dark/light
-*SolarLight*color1: S_red
-*SolarLight*color9: S_orange
+*SolarLight*color1: S_orange
+*SolarLight*color9: S_red
 
 !! green dark/light
-*SolarLight*color2: S_green
-*SolarLight*color10: S_base01
+*SolarLight*color2: S_base01
+*SolarLight*color10: S_green
 
 !! yellow dark/light
-*SolarLight*color3: S_yellow
-*SolarLight*color11: S_base00
+*SolarLight*color3: S_base00
+*SolarLight*color11: S_yellow
 
 !! blue dark/light
-*SolarLight*color4: S_blue
-*SolarLight*color12: S_base0
+*SolarLight*color4: S_base0
+*SolarLight*color12: S_blue
 
 !! magenta dark/light
-*SolarLight*color5: S_magenta
-*SolarLight*color13: S_violet
+*SolarLight*color5: S_violet
+*SolarLight*color13: S_magenta
 
 !! cyan dark/light
-*SolarLight*color6: S_cyan
-*SolarLight*color14: S_base1
+*SolarLight*color6: S_base1
+*SolarLight*color14: S_cyan
 
 !! white dark/light
-*SolarLight*color7: S_base2
-*SolarLight*color15: S_base3
+*SolarLight*color7: S_base3
+*SolarLight*color15: S_base2
 
 
