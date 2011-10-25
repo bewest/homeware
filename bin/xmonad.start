@@ -1,0 +1,37 @@
+#!/bin/bash
+
+#
+# Configure the environment for a desktop, specifically xmonad.
+# Simulates .xinitrc / .xsession, et al
+ 
+# Take care of X administrivia.
+xrandr -s 0
+xrdb $HOME/.Xresources
+
+#
+# Set any variables.
+#PATH=/home/dons/bin:$PATH
+
+#gnome-power-manager &
+#nm-applet &
+
+# This usually starts all the widgets for me, if some of your widgets are
+# missing add them here.
+gnome-session &
+
+# dzen stuff. should probably move to a dedicated script.  dzen creates a
+# little status window that floats everywhere.  It reads comands from stdin
+# and writes the resuls into the window.  It would be a shame to use all this
+# fancy technology without a clock to look at.
+FG='#a8a3f7' 
+BG='#3f3c6d' 
+ 
+while true ; do date ; sleep 60 ; done | \
+             dzen2 -e '' -x 0 -w 400 -ta l -fg $FG -bg $BG -p 5 &
+ 
+# Stolen from xmonad wiki or some place.
+# Launch xmonad
+dbus-launch --exit-with-session xmonad 
+
+#####
+# EOF
