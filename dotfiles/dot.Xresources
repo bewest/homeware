@@ -6,16 +6,16 @@
 !XTerm*background: black
 
 !! Font/Size stuff
-XTerm*faceSize1: 1
-XTerm*faceSize2: 5
-XTerm*faceSize3: 7
-XTerm*faceSize4: 10
-XTerm*faceSize5: 12
-XTerm*faceSize6: 15
+XTerm*faceSize1: 2
+XTerm*faceSize2: 6
+XTerm*faceSize3: 9
+XTerm*faceSize4: 12
+XTerm*faceSize5: 16
+XTerm*faceSize6: 19
 
 
 XTerm*faceName: Dejavu
-XTerm*faceSize: 7
+XTerm*faceSize: 12
 
 ! Xterm customized defaults
 XTerm*reverseVideo: true
