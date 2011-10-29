@@ -1,0 +1,50 @@
+
+I'm trying the solarized color scheme.
+It requires a fair bit of customization.  Xterm doesn't go
+into 256 color mode, and you need to get xterm, screen,
+and vim to all agree on the terminal type.
+
+Here are some helpful reminders:
+  * tput colors # prints number of colors
+  * TERM=xterm-256color # should trigger the right term
+    cap entries
+  * sudo apt-get install ncurses-term # install term
+    entries for 256 colors
+
+VIM
+
+Easiest to use pathogen.
+Debug solarized this way:
+http://stackoverflow.com/questions/5560658/ubuntu-vim-and-the-solarized-color-palette
+Check what t_Co vim has picked up from your term emulator
+(a quick :echo &t_Co). If it's 8 you'll want to se
+t_Co=16. You might also try se t_Co=256 though without let
+g:solarized_termcolors=16 this will use the 256 fallback
+mode, which isn't quite the correct color scheme.
+
+:colorscheme solarized
+:set background=light
+:set background=dark
+
+
+When configured correctly, this inverts the colors
+schemes.
+
+XTERM
+http://www.frexx.de/xterm-256-notes/
+http://www.osterman.com/wordpress/2011/07/20/xterm256color-unknown-terminal-type
+http://vim.wikia.com/wiki/256_colors_in_vim
+Setting $TERM in the shell profile is generally a bad
+idea, since you may wish to use different terminals. It is
+preferable to add it to .Xdefaults (or similar file read
+by X applications):
+
+XTerm*termName:         xterm-256color
+
+xterm-blue
+xterm-light
+
+SCREEN
+http://www.xvx.ca/~awg/emacs-colors-howto.txt
+  *     echo term screen-256color >>~/.screenrc
+

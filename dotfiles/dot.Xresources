@@ -27,6 +27,8 @@ XTerm*color4: SkyBlue
 XTerm*color12: SkyBlue
 
 
+*customization: -color
+XTerm*termName:  xterm-256color
 
 ! Key bindings
 ! ctrl + increases size

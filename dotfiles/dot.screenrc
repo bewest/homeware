@@ -110,18 +110,18 @@
 # TERMCAP and TERMINFO
 # ===============================================================
 #
-  termcapinfo xterm     ti@:te@
+# termcapinfo xterm     ti@:te@
 #
 # termcap  xterm        'AF=\E[3%dm:AB=\E[4%dm'
 # terminfo xterm        'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
 #
 # Matthias Kopfermann <matthias_kopfermann(at)gmx.de> [020222]:
 # make the cursor show up in red:
-  termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
+# termcapinfo linux "ve=\E[?25h\E[?17;0;64c"
 #
 # David Breach <david(at)davidbreach.co.uk> [2003-10-13]:
 # this makes screen work within rxvt on cygwin:
-  termcapinfo rxvt-cygwin-native ti@:te@
+# termcapinfo rxvt-cygwin-native ti@:te@
 #
 # ===============================================================
 # VARIABLES - Number values
@@ -711,6 +711,18 @@ bindkey -d -k kD
 
 
 shelltitle ''
+#
+# http://www.frexx.de/xterm-256-notes/
+# # terminfo and termcap for nice 256 color terminal
+# # allow bold colors - necessary for some reason
+attrcolor b ".I"
+# # tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# # erase background with current bg color
+#term screen-256color
+defbce "on"
+term screen-256color
 
 #
 # Local changes 
