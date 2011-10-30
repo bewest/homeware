@@ -21,11 +21,24 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 if [ -d $HOME/bin ] ; then
   export PATH="$HOME/bin:$PATH"
+
 fi
 
-alias ls="ls --color=auto"
-keychain --inherit any ~/.ssh/id_rsa ; . ~/.keychain/$(hostname)-sh
+EXTRAS='
+/var/lib/gems/1.8/bin
+~/.gem/ruby/1.8/bin
+~/.cabal/bin'
 
+for extra in $EXTRAS ; do
+  if [ -d $extra ] ; then
+    export PATH="$extra:$PATH"
+  fi
+done
+
+alias ls="ls --color=auto"
+if [ -x $(which keychain) ]; then
+  keychain --inherit any ~/.ssh/id_rsa ; . ~/.keychain/$(hostname)-sh
+fi
 
 #####
 # EOF
