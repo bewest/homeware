@@ -1,5 +1,5 @@
 
-set runtimepath+=~/.vim,~/.vim/autoreload,~/.vim/bundle/
+set runtimepath+=~/.vim,~/.vim/autoload,~/.vim/bundle/
 set runtimepath+=/usr/share/lilypond/2.12.3/vim/
 call pathogen#infect()
 syntax on
