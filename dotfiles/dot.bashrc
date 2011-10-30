@@ -70,8 +70,7 @@ function update-env {
   # also include a entire directory for toying around with.
   if [ -d ~/.bash.d/ ]; then
     for include in ~/.bash.d/*; do
-      echo
-      #. $include
+      . $include
     done
   fi
 }
