@@ -38,6 +38,8 @@ ignore:
 	@echo $(DOT_FILES) | xargs -n 1 echo
 	@echo DOT_HOMES
 	@echo $(DOT_HOMES) | xargs -n 1 echo
+	@echo DIFF_TARGETS
+	@echo $(DIFF_TARGETS) | xargs -n 1 echo
 
 install: bin dotfiles
 

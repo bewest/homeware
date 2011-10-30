@@ -1,15 +1,15 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.10 for bewest on Mon Sep  6 11:08:56 2010.
+# Written by xscreensaver-demo 5.10 for bewest on Tue Oct 18 13:24:42 2011.
 # http://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
-cycle:		0:10:00
+cycle:		0:04:00
 lock:		False
 lockTimeout:	0:00:00
 passwdTimeout:	0:00:30
 visualID:	default
 installColormap:    True
-verbose:	True
+verbose:	False
 timestamp:	True
 splash:		True
 splashDuration:	0:00:05
@@ -33,7 +33,7 @@ grabVideoFrames:    False
 chooseRandomImages: True
 imageDirectory:	/home/bewest/Pictures/Photos/savescreen
 
-mode:		one
+mode:		random
 selected:	13
 
 textMode:	date
@@ -56,7 +56,7 @@ programs:								      \
 -				qix -root				    \n\
 -				rocks -root				    \n\
 -				rorschach -root				    \n\
-  Best: 			decayscreen -root			    \n\
+				decayscreen -root -duration 230		    \n\
 -				flame -root				    \n\
 -				halo -root				    \n\
 				slidescreen -root			    \n\
@@ -71,8 +71,7 @@ programs:								      \
 -				goop -root				    \n\
 -				grav -root				    \n\
 -				ifs -root				    \n\
-  GL: 				jigsaw -root -delay 7627 -speed 7.7322	      \
-				  -complexity 1.4322 -resolution 200	    \n\
+  GL: 				jigsaw -root				    \n\
 -				julia -root				    \n\
 -				kaleidescope -root			    \n\
 - GL: 				moebius -root				    \n\
@@ -85,8 +84,7 @@ programs:								      \
 -				rd-bomb -root				    \n\
 - GL: 				rubik -root				    \n\
 -				sierpinski -root			    \n\
-				slip -root -delay 22881 -count 6 -cycles      \
-				  3 -ncolors 35				    \n\
+				slip -root				    \n\
 - GL: 				sproingies -root			    \n\
 -				starfish -root				    \n\
 -				strange -root				    \n\
@@ -125,12 +123,11 @@ programs:								      \
 -				petri -root				    \n\
 -				phosphor -root				    \n\
 - GL: 				pulsar -root				    \n\
-				ripples -root -delay 83051 -duration 40	      \
-				  -rate 100 -fluidity 1 -stir -light 8	      \
-				  -fps					    \n\
+				ripples -root -delay 11017 -duration 175      \
+				  -rate 89 -fluidity 2 -stir -fps	    \n\
 -				shadebobs -root				    \n\
 - GL: 				sierpinski3d -root			    \n\
-				spotlight -root -radius 350		    \n\
+				spotlight -root				    \n\
 -				squiral -root				    \n\
 -				wander -root				    \n\
 -				webcollage -root			    \n\
@@ -153,9 +150,7 @@ programs:								      \
 - GL: 				stonerview -root			    \n\
 -				vermiculate -root			    \n\
 -				whirlwindwarp -root			    \n\
-				zoom -root -pixwidth 3 -pixspacex 0	      \
-				  -lensoffsetx 6 -pixheight 3 -pixspacey      \
-				  0 -lensoffsety 6 -no-lenses		    \n\
+-				zoom -root				    \n\
 -				anemone -root				    \n\
 -				apollonian -root			    \n\
 - GL: 				boxed -root				    \n\
@@ -174,11 +169,8 @@ programs:								      \
 - GL: 				sballs -root				    \n\
 - GL: 				spheremonics -root			    \n\
 -				thornbird -root				    \n\
-				twang -root -duration 25 -event-chance	      \
-				  0.0195 -friction 0.1746 -springiness	      \
-				  0.0169 -transference 0.0085 -tile-size      \
-				  418					    \n\
-  GL: 				antspotlight -root			    \n\
+				twang -root				    \n\
+- GL: 				antspotlight -root			    \n\
 -				apple2 -root				    \n\
 - GL: 				atunnel -root				    \n\
 -				barcode -root				    \n\
@@ -198,8 +190,7 @@ programs:								      \
 - GL: 				hypertorus -root			    \n\
 - GL: 				jigglypuff -root			    \n\
 -				metaballs -root				    \n\
-  GL: 				mirrorblob -root -zoom 0.7144 -blend	      \
-				  0.2373 -walls				    \n\
+  GL: 				mirrorblob -root			    \n\
 -				piecewise -root				    \n\
 - GL: 				polytopes -root				    \n\
 -				pong -root				    \n\
@@ -246,7 +237,7 @@ programs:								      \
 - GL: 				hypnowheel -root			    \n\
 - GL: 				klein -root				    \n\
 -				lcdscrub -root				    \n\
-  GL: 				photopile -root				    \n\
+  GL: 				photopile -root -count 10 -titles	    \n\
 - GL: 				skytentacles -root			    \n\
 - GL: 				rubikblocks -root			    \n\
 

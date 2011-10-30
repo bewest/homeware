@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z "$STY" ]; then
+  . ~/tmp/env.sh
+fi
+
+
+#####
+# EOF

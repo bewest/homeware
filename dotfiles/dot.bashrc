@@ -59,3 +59,22 @@ esac
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+function update-env {
+  # attempt a per host bashrc
+  hostrc=~/.local.$(hostname).bashrc
+  if [ -f $hostrc ]; then
+    . $hostrc
+  fi
+
+  # also include a entire directory for toying around with.
+  if [ -d ~/.bash.d/ ]; then
+    for include in ~/.bash.d/*; do
+      echo
+      #. $include
+    done
+  fi
+}
+
+#####
+# EOF
