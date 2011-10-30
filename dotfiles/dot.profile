@@ -19,6 +19,9 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
+if [ -d $HOME/bin ] ; then
+  export PATH="$HOME/bin:$PATH"
+fi
 
 alias ls="ls --color=auto"
 keychain --inherit any ~/.ssh/id_rsa ; . ~/.keychain/$(hostname)-sh
