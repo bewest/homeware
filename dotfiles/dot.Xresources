@@ -6,29 +6,29 @@
 !XTerm*background: black
 
 !! Font/Size stuff
-XTerm*faceSize1: 2
-XTerm*faceSize2: 6
-XTerm*faceSize3: 9
-XTerm*faceSize4: 12
-XTerm*faceSize5: 16
-XTerm*faceSize6: 19
+xterm*faceSize1: 2
+xterm*faceSize2: 6
+xterm*faceSize3: 9
+xterm*faceSize4: 12
+xterm*faceSize5: 16
+xterm*faceSize6: 19
 
 
-XTerm*faceName: Dejavu
-XTerm*faceSize: 12
+xterm*faceName: Dejavu
+xterm*faceSize: 12
 
 ! Xterm customized defaults
-XTerm*reverseVideo: true
-XTerm*visualBell: true
-XTerm*saveLines: 5000
+!xterm*XTerm*reverseVideo: true
+xterm*visualBell: true
+xterm*saveLines: 5000
 !XTerm*scrollBar: true
 !XTerm*font: -*-clean-medium-r-*--14-*-*-*-*-60-*-*
-XTerm*color4: SkyBlue
-XTerm*color12: SkyBlue
+!xterm*XTerm*color4: DodgerBlue2
+!xterm*XTerm*color12: RoyalBlue1
 
 
 *customization: -color
-XTerm*termName:  xterm-256color
+xterm*termName:  xterm-256color
 
 ! Key bindings
 ! ctrl + increases size
@@ -89,46 +89,46 @@ XTerm*termName:  xterm-256color
 #define S_dark2  S_base2
 #define S_dark3  S_base3
 
-*SolarBlue*background: S_dark03
-*SolarBlue*foreground: S_dark00
-*SolarBlue*fading: 40
-*SolarBlue*fadeColor: S_dark03
-*SolarBlue*cursorColor: S_dark1
-*SolarBlue*pointerColorBackground:S_dark01
-*SolarBlue*pointerColorForeground:S_dark1
+.SolarBlue*background: S_dark03
+.SolarBlue*foreground: S_dark00
+.SolarBlue*fading: 40
+.SolarBlue*fadeColor: S_dark03
+.SolarBlue*cursorColor: S_dark1
+.SolarBlue*pointerColorBackground:S_dark01
+.SolarBlue*pointerColorForeground:S_dark1
 
 !! black dark/light
-*SolarBlue*color0: S_dark02
-*SolarBlue*color8: S_dark03
+.SolarBlue*color0: S_dark02
+.SolarBlue*color8: S_dark03
 
 !! red dark/light
-*SolarBlue*color1: S_red
-*SolarBlue*color9: S_orange
+.SolarBlue*color1: S_red
+.SolarBlue*color9: S_orange
 
 !! green dark/light
-*SolarBlue*color2: S_green
-*SolarBlue*color10: S_dark01
+.SolarBlue*color2: S_green
+.SolarBlue*color10: S_dark01
 
 !! yellow dark/light
-*SolarBlue*color3: S_yellow
-*SolarBlue*color11: S_dark00
+.SolarBlue*color3: S_yellow
+.SolarBlue*color11: S_dark00
 
 !! blue dark/light
-*SolarBlue*color4: S_blue
-*SolarBlue*color12: S_dark0
+.SolarBlue*color4: S_blue
+.SolarBlue*color12: S_dark0
 
 !! magenta dark/light
-*SolarBlue*color5: S_magenta
-*SolarBlue*color13: S_violet
+.SolarBlue*color5: S_magenta
+.SolarBlue*color13: S_violet
 
 !! cyan dark/light
-*SolarBlue*color6: S_cyan
-*SolarBlue*color14: S_dark1
+.SolarBlue*color6: S_cyan
+.SolarBlue*color14: S_dark1
 
 !! white dark/light
-*SolarBlue*color7: S_dark2
-*SolarBlue*color15: S_dark3
-XTerm*SolarBlue*reverseVideo: false
+.SolarBlue*color7: S_dark2
+.SolarBlue*color15: S_dark3
+!xtermSolarBlue*reverseVideo: false
 
 
 
@@ -144,48 +144,53 @@ XTerm*SolarBlue*reverseVideo: false
 #define S_light2  S_base02
 #define S_light3  S_base03
 
-*SolarLight*background: S_light03
-*SolarLight*foreground: S_light00
-*SolarLight*fading: 40
-*SolarLight*fadeColor: S_light03
-*SolarLight*cursorColor: S_light1
-*SolarLight*pointerColorBackground:S_light01
-*SolarLight*pointerColorForeground:S_light1
+.SolarLight*background: S_light03
+.SolarLight*foreground: S_light00
+.SolarLight*fading: 40
+.SolarLight*fadeColor: S_light03
+.SolarLight*cursorColor: S_light1
+.SolarLight*pointerColorBackground:S_light01
+.SolarLight*pointerColorForeground:S_light1
 
 !! black dark/light
-*SolarLight*color0: S_light02
-*SolarLight*color8: S_light03
+.SolarLight*color0: S_light02
+.SolarLight*color8: S_light03
 
 !! red dark/light
-*SolarLight*color1: S_red
-*SolarLight*color9: S_orange
+.SolarLight*color1: S_red
+.SolarLight*color9: S_orange
 
 !! green dark/light
-*SolarLight*color2: S_green
-*SolarLight*color10: S_light01
+.SolarLight*color2: S_green
+.SolarLight*color10: S_light01
 
 !! yellow dark/light
-*SolarLight*color3: S_yellow
-*SolarLight*color11: S_light00
+.SolarLight*color3: S_yellow
+.SolarLight*color11: S_light00
 
 !! blue dark/light
-*SolarLight*color4: S_blue
-*SolarLight*color12: S_light0
+.SolarLight*color4: S_blue
+.SolarLight*color12: S_light0
 
 !! magenta dark/light
-*SolarLight*color5: S_magenta
-*SolarLight*color13: S_violet
+.SolarLight*color5: S_magenta
+.SolarLight*color13: S_violet
 
 !! cyan dark/light
-*SolarLight*color6: S_cyan
-*SolarLight*color14: S_light1
+.SolarLight*color6: S_cyan
+.SolarLight*color14: S_light1
 
 !! white dark/light
-*SolarLight*color7: S_light2
-*SolarLight*color15: S_light3
-XTerm*SolarLight*reverseVideo: false
+.SolarLight*color7: S_light2
+.SolarLight*color15: S_light3
+!xtermSolarLight*reverseVideo: false
 
 
+!!!! Custom Background
+Dark*background: black
+Dark*foreground: white
+Dark*color4:     SkyBlue
+Dark*color12:    DeepSkyBlue2
 
 !!!!!
 ! EOF

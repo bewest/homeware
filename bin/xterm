@@ -1,0 +1,18 @@
+#!/bin/bash
+# Sniff out preferred way of calling xterm.  Allows me to keep xmonad defaults.
+
+command=/usr/bin/xterm
+if [ -f ~/etc/default/xterm ] ; then
+  . ~/etc/default/xterm
+  if [ -n $PREFERRED_SCHEME ] ; then
+    candidate=~/bin/xterm-$PREFERRED_SCHEME
+    if [ -x $candidate ] ; then
+      command=$candidate
+    fi
+  fi
+fi
+
+exec $command $*
+
+#####
+# EOF

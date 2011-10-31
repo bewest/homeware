@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xterm -name XTerm -class 'SolarLight'
+/usr/bin/xterm -class 'SolarLight' $*
 
 #####
 # EOF

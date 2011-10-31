@@ -48,7 +48,7 @@ dotfiles: $(DOT_HOMES)
 diff:
 	diff -ur ~/bin/ bin/
 
-diff-dotfiles: all $(DIFF_TARGETS)
+diff-dotfiles: $(DIFF_TARGETS)
   
 
 $(DIFF_TARGETS):

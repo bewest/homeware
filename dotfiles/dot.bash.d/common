@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Included by bewest's .bashrc
+
+function update-env {
+  # attempt a per host bashrc
+  hostrc=~/.local.$(hostname).bashrc
+  if [ -f $hostrc ]; then
+    . $hostrc
+  fi
+
+  # also include a entire directory for toying around with.
+  if [ -d ~/.bash.d/ ]; then
+    for include in ~/.bash.d/*; do
+      . $include
+    done
+  fi
+}
+
+function set-preferred-xterm {
+  scheme=$1
+  mkdir -p ~/etc/default
+  echo "export PREFERRED_SCHEME=$scheme" > ~/etc/default/xterm
+}
+
+
+#####
+# EOF
