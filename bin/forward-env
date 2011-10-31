@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mkdir -p ~/tmp/
+. forward-vars > ~/tmp/env.sh
+
+me="$(whoami)*"
+screen $* -X at "$me" \
+  eval 'echo "Session environment has been updated."'
+
+#####
+# EOF
