@@ -1,0 +1,4 @@
+# channel for the lucid (10.04) partner channel
+# 
+#:description:This channel contains the partner software for lucid
+deb http://archive.canonical.com/ubuntu lucid partner
