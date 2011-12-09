@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Run your program in a loop blocking on filesystem
+# changes by wrapping inotifywait.  Based on pallas'
+# watchme.
+# $ sudo apt-get install inotify-tools
+# 
+
+PROGRAM=$1
+shift
+notify_args="$*"
+
+function watchme {
+  format='%w%f %e %T'
+  # pipe to cat eats exit codes
+  set -x
+  inotifywait -r   \
+         -e modify  \
+         -e move     \
+    --timefmt %F      \
+    --format "$format" \
+                    $* | cat
+  set +x
+}
+
+while ( watchme $notify_args ) ; do
+  set -x  ; sleep .5
+  $PROGRAM
+  sleep 2 ; set +x
+done
+# does anyone else find infoitfy impossible to spell?
+# -bewest
+#####
+# EOF
