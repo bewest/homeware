@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -n "$STY" ]; then
-  if [ -x ~/tmp/env.sh ] ; then
+  if [ -f ~/tmp/env.sh ] ; then
     . ~/tmp/env.sh
   fi
 fi
