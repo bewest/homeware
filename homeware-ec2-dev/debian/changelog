@@ -1,3 +1,9 @@
+homeware-ec2-dev (0.1ubuntu2) lucid; urgency=low
+
+  * add some more dependencies 
+
+ -- Ben West <bewest@gmail.com>  Thu, 22 Dec 2011 00:22:41 -0800
+
 homeware-ec2-dev (0.1ubuntu1) lucid; urgency=low
 
   * bump
