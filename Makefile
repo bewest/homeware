@@ -17,7 +17,7 @@ DIFF_PREREQS=$(addprefix diff-, $(DOT_FILES))
 diff2name=$(subst diff-,,$(1))
 diff2dot=$(patsubst diff-$(HOME)/.%,dotfiles/dot.%,$(1))
 name2diff=$(addprefix diff-, $(1))
-diff= diff -ur
+diff= diff -x ".git" -x ".gitignore" -ur
 
 home2dot=$(patsubst $(HOME)/.%,dotfiles/dot.%,$(1))
 dot2home= $(patsubst dotfiles/dot.%,$(HOME)/.%,$(1))
