@@ -70,6 +70,8 @@ bin: ~/bin/
 	git archive --format=tar HEAD $^ |  ( cd ~;  tar -xvf - )
 
 
+~/.%.git%: dotfiles/dot.%.git%
+	#Ignore git.
 
 # DOT_HOMES
 ~/.%: dotfiles/dot.%
