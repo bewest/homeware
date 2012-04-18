@@ -1,0 +1,12 @@
+[submodule "dotfiles/dot.vim/bundle/vim-colors-solarized"]
+	path = dotfiles/dot.vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "dotfiles/dot.vim/bundle/vim-coffee-script"]
+	path = dotfiles/dot.vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "dotfiles/dot.vim/bundle/vim-haml"]
+	path = dotfiles/dot.vim/bundle/vim-haml
+	url = https://github.com/tpope/vim-haml.git
+[submodule "dotfiles/dot.vim/bundle/vim-less"]
+	path = dotfiles/dot.vim/bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
