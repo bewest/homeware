@@ -75,8 +75,9 @@ bin: ~/bin/
 
 # DOT_HOMES
 ~/.%: dotfiles/dot.%
-	mkdir -p $(@D)
-	test -f $^ &&  $(CP_FILE) $^ $@ || $(CP_DIR) $^/* $@
+	rsync -av --exclude="*.git*" $^ $@
+	#mkdir -p $(@D)
+	#test -f $^ &&  $(CP_FILE) $^ $@ || $(CP_DIR) $^/* $@
 
 .PHONY: dotfiles diff diff-* $(DIFF_PREREQS) $(DIFF_TARGETS)
 
