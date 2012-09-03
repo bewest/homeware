@@ -29,6 +29,7 @@ DIFF_TARGETS=$(call name2diff,$(DOT_HOMES))
 CP_FILE=cp -v
 CP_DIR=cp -vr
 
+samefile=$(shell find $1 -samefile $2)
 
 all:
 
@@ -41,14 +42,21 @@ ignore:
 	@echo DIFF_TARGETS
 	@echo $(DIFF_TARGETS) | xargs -n 1 echo
 
-broken: $(HOME)/.*/dot.*/
-	echo $^
+fix-broken: $(HOME)/.*/dot.*/
+	@# -v -t $< $(subst $@,dot.%,$*)
+
 install: bin dotfiles
-	# I might have broken things on first install :-( Buggaboo.
+ifneq ($(shell find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*"),)
+	# I might have broken things on what is probably first install :-( Buggaboo.
 	find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*"
-	# This might fix it:
-	find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*" | while read dir; do mv -v -t $(shell find $(HOME) -samefile $dir/../) $dir/*; rmdir $dir  done
-	# find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*" | while read dir; do rmdir $dir;  done
+	# This should fix it:
+	find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*" \
+  | while read dir; do \
+    mv -v -t $$(find $(HOME) -samefile $$dir/../) $$dir/*;\
+    rmdir $$dir;\
+  done
+endif
+	# Everything works.  Success!
 
 
 dotfiles: $(DOT_HOMES)
@@ -87,7 +95,7 @@ bin: ~/bin/
 	#mkdir -p $(@D)
 	#test -f $^ &&  $(CP_FILE) $^ $@ || $(CP_DIR) $^/* $@
 
-.PHONY: dotfiles diff diff-* $(DIFF_PREREQS) $(DIFF_TARGETS)
+.PHONY: dotfiles diff diff-* $(DIFF_PREREQS) $(DIFF_TARGETS) fix-broken
 
 #####
 # EOF
