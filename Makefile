@@ -41,7 +41,15 @@ ignore:
 	@echo DIFF_TARGETS
 	@echo $(DIFF_TARGETS) | xargs -n 1 echo
 
+broken: $(HOME)/.*/dot.*/
+	echo $^
 install: bin dotfiles
+	# I might have broken things on first install :-( Buggaboo.
+	find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*"
+	# This might fix it:
+	find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*" | while read dir; do mv -v -t $(shell find $(HOME) -samefile $dir/../) $dir/*; rmdir $dir  done
+	# find ~/  -type d -path "$(HOME)/.*/dot\.*" -name "dot.*" | while read dir; do rmdir $dir;  done
+
 
 dotfiles: $(DOT_HOMES)
         
