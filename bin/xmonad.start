@@ -35,7 +35,6 @@ while true ; do date ; sleep 60 ; done | \
 # Stolen from xmonad wiki or some place.
 # Launch xmonad
 dbus-launch --exit-with-session xmonad
-#xmonad
 
 #####
 # EOF
