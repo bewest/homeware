@@ -22,6 +22,13 @@ worst here somehow.
   ticks and periods `.`.
 * mono-spaced of course, so that columns line up nicely.
 
+Here's a quick test:
+```
+Font test: O0oO0Oo0O 0123456789 A453EJI1l db qp $%*&
+({[<##l^@1'>]}) AOK 123.456.789.0 ---- ,,, ||.1il1Iil1jJ dbdbcqdb,pqqgpqp
+({[<1l**XXX>]}) N0T l2E,AS6.736.O ---- ''' ||1il1Iil1jJ dbdbcqdb.pqqgpqp,
+```
+
 ## solarized dejavu
 
 [![dejavu-16](https://github.com/bewest/homeware/raw/master/fonts/font-dejavu-16.png)](#solarized dejavu)
