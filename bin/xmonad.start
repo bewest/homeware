@@ -8,16 +8,19 @@
 xrandr -s 0
 xrdb $HOME/.Xresources
 
-#
-# Set any variables.
-#PATH=/home/dons/bin:$PATH
+logger -t "DEBUG: $0 $@"
+echo "DEBUG" $0 $@
 
-#gnome-power-manager &
-#nm-applet &
+# XXX: the new way of doing this is to let ubuntu find and establish
+# the environment for most things.  We pretty much only want to load
+# xmonad connected to dbus, which I think gives everything nicer menus
+# and fonts and whatnot.
 
 # This usually starts all the widgets for me, if some of your widgets are
 # missing add them here.
 gnome-session &
+unity-2d-panel &
+unity-2d-shell &
 
 # dzen stuff. should probably move to a dedicated script.  dzen creates a
 # little status window that floats everywhere.  It reads comands from stdin
@@ -31,7 +34,7 @@ while true ; do date ; sleep 60 ; done | \
  
 # Stolen from xmonad wiki or some place.
 # Launch xmonad
-dbus-launch --exit-with-session xmonad 
+dbus-launch --exit-with-session xmonad
 
 #####
 # EOF

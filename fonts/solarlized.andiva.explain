@@ -1,0 +1,2 @@
+WM_CLASS(STRING) = "xterm", "SolarBlue"
+WM_COMMAND(STRING) = { "/usr/bin/xterm", "-class", "SolarBlue", "-fa", "andiva-16" }

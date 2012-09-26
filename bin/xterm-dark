@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/bin/xterm -class 'Dark' $*
+/usr/bin/xterm -name 'xterm-dark' $*
 
 #####
 # EOF

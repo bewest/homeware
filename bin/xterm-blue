@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/bin/xterm -class 'SolarBlue' $*
+/usr/bin/xterm -name 'xterm-solarblue' $*
 
 #####
 # EOF
