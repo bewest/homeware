@@ -13,4 +13,8 @@ set ts=2
 set sw=2
 set expandtab
 
+colorscheme solarized
+set background=dark
+
 set cursorline
+set number

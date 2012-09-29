@@ -32,7 +32,6 @@ xterm*saveLines: 5000
 
 
 *customization: -color
-xterm*termName:  xterm-256color
 
 ! Key bindings
 ! http://tamentis.com/doc/xterm_resources/
@@ -199,6 +198,8 @@ xterm-dark*background: black
 xterm-dark*foreground: white
 xterm-dark*color4:     SkyBlue
 xterm-dark*color12:    DeepSkyBlue2
+
+*termName:  xterm-256color
 
 !!!!!
 ! EOF
