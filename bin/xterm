@@ -2,16 +2,23 @@
 # Sniff out preferred way of calling xterm.  Allows me to keep xmonad defaults.
 
 command=/usr/bin/xterm
+# If I have a preference file
 if [ -f ~/etc/default/xterm ] ; then
+  # include it to define PREFERRED_SCHEME
   . ~/etc/default/xterm
   if [ -n $PREFERRED_SCHEME ] ; then
+    # if PREFERRED_SCHEME was not empty string, try to hack together an
+    # executable name based on the theme name.
     candidate=~/bin/xterm-$PREFERRED_SCHEME
     if [ -x $candidate ] ; then
+      # if the candidate is executable, replace the normal xterm with our
+      # themed xterm
       command=$candidate
     fi
   fi
 fi
 
+# replace this process with that one
 exec $command $*
 
 #####
