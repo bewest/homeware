@@ -9,11 +9,13 @@ Ubuntu stopped using screensavers.
 http://www.howtogeek.com/114027/how-to-add-screensavers-to-ubuntu-12.04/
 
 http://askubuntu.com/questions/11805/how-to-open-ssh-usernamehostname-link
+
+```bash
     gconftool-2 --set --type=bool /desktop/gnome/url-handlers/ssh/enabled true
     gconftool-2 --set --type=string /desktop/gnome/url-handlers/ssh/command 'xterm-light -e "%s"'
     gconftool-2 --set --type=bool /desktop/gnome/url-handlers/ssh/needs_terminal false
-
-
+```
+![solarized ripen-screenshot](https://raw.github.com/bewest/homeware/master/ripen-screenshot-2011-11-02.png)
 
 
 Personal Cloud Computing
